@@ -1,43 +1,22 @@
-:root {
-  --font_0: normal normal normal 24px/1.6em
-      wfont_643d94_dd28b3957391427eb54de1c9eff7cfb1,
-    wf_dd28b3957391427eb54de1c9e, orig_tbc_x_regular;
-  --font_1: normal normal normal 16px/1.4em din-next-w01-light,
-    din-next-w02-light, din-next-w10-light, sans-serif;
-  --font_2: normal normal normal 20px/1.6em
-      wfont_643d94_93c16d86ec9d47d0a2a36894fbdd54fd,
-    wf_93c16d86ec9d47d0a2a36894f, orig_tbc_x_medium;
-  --font_3: normal normal normal 48px/1.6em
-      wfont_643d94_dd28b3957391427eb54de1c9eff7cfb1,
-    wf_dd28b3957391427eb54de1c9e, orig_tbc_x_regular;
-  --font_4: normal normal normal 32px/1.6em
-      wfont_643d94_dd28b3957391427eb54de1c9eff7cfb1,
-    wf_dd28b3957391427eb54de1c9e, orig_tbc_x_regular;
-  --font_5: normal normal normal 28px/1.6em
-      wfont_643d94_dd28b3957391427eb54de1c9eff7cfb1,
-    wf_dd28b3957391427eb54de1c9e, orig_tbc_x_regular;
-  --font_6: normal normal normal 24px/1.6em
-      wfont_643d94_dd28b3957391427eb54de1c9eff7cfb1,
-    wf_dd28b3957391427eb54de1c9e, orig_tbc_x_regular;
-  --font_7: normal normal normal 18px/1.6em
-      wfont_643d94_dd28b3957391427eb54de1c9eff7cfb1,
-    wf_dd28b3957391427eb54de1c9e, orig_tbc_x_regular;
-  --font_8: normal normal normal 16px/1.6em
-      wfont_643d94_dd28b3957391427eb54de1c9eff7cfb1,
-    wf_dd28b3957391427eb54de1c9e, orig_tbc_x_regular;
-  --font_9: normal normal normal 14px/1.6em
-      wfont_643d94_dd28b3957391427eb54de1c9eff7cfb1,
-    wf_dd28b3957391427eb54de1c9e, orig_tbc_x_regular;
-  --font_10: normal normal normal 10px/1.4em din-next-w01-light,
-    din-next-w02-light, din-next-w10-light, sans-serif;
+/* ===========================
+    immport fonts
+============================= */
+@font-face {
+  font-family: "ligther";
+  src: url("./fonts/lighter.woff2") format("woff2");
 }
+@font-face {
+  font-family: "bolder";
+  src: url("./fonts/bolder.woff2") format("woff2");
+}
+
 * {
   margin: 0;
   padding: 0;
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  color: #f4f4f4;
 }
 
 /* ===========================
@@ -60,13 +39,15 @@ nav {
 
 nav ul {
   display: flex;
-  color: #f4f4f4;
 }
 
 nav ul li {
   list-style-type: none;
   padding: 0px 10px 0px 30px;
-  font-family: var(--font_9, var(--font_1));
+  font-family: ligther;
+  font-size: 14px;
+  font-weight: lighter;
+  line-height: 26px;
   transition: 0.3s;
   cursor: pointer;
 }
@@ -77,4 +58,44 @@ nav ul li:hover {
 
 nav ul li:nth-child(3) {
   color: #00a3e0;
+}
+
+/* ===========================
+    banner style 
+============================= */
+main {
+  display: 100%;
+}
+
+.banner {
+  width: 100%;
+  top: 0;
+  position: relative;
+}
+
+.banner img {
+  width: 100%;
+  height: 352px;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.banner-title {
+  /* position */
+  position: absolute;
+  top: 47%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* another */
+  width: 980px;
+}
+
+.banner-title span:nth-child(1) {
+  font-size: 42px;
+  font-family: bolder;
+}
+
+.banner-title span:nth-child(4) {
+  font-family: bolder;
+  font-size: 34px;
 }
