@@ -46,7 +46,6 @@ nav ul li {
   padding: 0px 10px 0px 30px;
   font-family: lighter;
   font-size: 14px;
-  font-weight: lighter;
   line-height: 26px;
   transition: 0.3s;
   cursor: pointer;
@@ -131,4 +130,91 @@ main {
   font-weight: bold;
   display: inline-block;
   margin-top: 30px;
+}
+
+/* ===========================
+    courses section style 
+============================= */
+
+.courses {
+  width: 100%;
+  background-color: #161616;
+  display: flex;
+  justify-content: center;
+}
+
+.courses-container {
+  width: 980px;
+}
+
+.courses-title {
+  display: inline-block;
+  margin-top: 35px;
+  padding-bottom: 50px;
+  font-size: 24px;
+  font-family: lighter;
+}
+
+#cardContainer {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: space-between;
+}
+
+.card {
+  width: 300px;
+  height: 414px;
+  margin: 12.5px 0px;
+  border: 1px solid rgba(85, 85, 85, 1);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: 150px;
+}
+
+.card-information {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  height: 264px;
+}
+
+.card-information div {
+  width: 266px;
+  margin-left: 22px;
+}
+
+.card-information h5 {
+  font-family: lighter;
+  font-size: 18px;
+  margin-top: 30px;
+}
+
+.card-information p {
+  font-family: lighter;
+  font-size: 14px;
+  margin-top: 25px;
+}
+
+.card-information a {
+  display: flex;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 26px;
+  left: 22px;
+  font-size: 16px;
+  font-family: lighter;
+  color: #00aeff;
+  cursor: pointer;
+}
+
+.card-information a svg {
+  padding-right: 7px;
+}
+
+.card-information a svg path {
+  fill: #00aeff;
 }
