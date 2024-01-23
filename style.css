@@ -15,6 +15,10 @@
   padding: 0;
 }
 
+html {
+  box-sizing: border-box;
+}
+
 body {
   color: #f4f4f4;
 }
@@ -145,6 +149,7 @@ main {
 
 .courses-container {
   width: 980px;
+  padding-bottom: 50px;
 }
 
 .courses-title {
@@ -165,7 +170,7 @@ main {
   width: 300px;
   height: 414px;
   margin: 12.5px 0px;
-  border: 1px solid rgba(85, 85, 85, 1);
+  border: 1px solid rgba(85, 85, 85, 0.7);
   border-radius: 6px;
   overflow: hidden;
 }
@@ -203,7 +208,7 @@ main {
   display: flex;
   align-items: flex-end;
   position: absolute;
-  bottom: 26px;
+  bottom: 34px;
   left: 22px;
   font-size: 16px;
   font-family: lighter;
@@ -212,9 +217,90 @@ main {
 }
 
 .card-information a svg {
-  padding-right: 7px;
+  padding-right: 9px;
 }
 
 .card-information a svg path {
   fill: #00aeff;
+}
+
+/* ===========================
+    Partners slider style
+============================= */
+
+/* ===========================
+    Accordion section style
+============================= */
+
+.accordion {
+  width: 100%;
+  background-color: #161616;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  font-family: lighter;
+  padding: 80px 0px;
+}
+
+.accordion-space {
+  max-width: 900px;
+}
+
+.accordion-title {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+
+.accordion-title h3 {
+  font-size: 24px;
+}
+
+.accordion-title a {
+  font-size: 20px;
+  color: #00aef3;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.accordion-item {
+  border-bottom: 1px solid rgb(53, 49, 49);
+  overflow: hidden;
+}
+
+.accordion-header {
+  cursor: pointer;
+  height: 83px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.accordion-header svg {
+  fill: white;
+}
+
+.accordion-header svg.active {
+  transform: rotate(180deg);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-in-out;
+}
+
+.accordion-content p {
+  padding: 10px 2px;
+  color: white;
+  font-size: 14px;
+}
+
+.paragraph-container {
+  margin-left: 15px;
+}
+
+.accordion-content.active {
+  max-height: 1000px; /* Adjust the max-height based on your content */
 }

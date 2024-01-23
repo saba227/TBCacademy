@@ -1,5 +1,6 @@
 // Variables for DOM manipulation
 let coursesDiv = document.getElementById("cardContainer");
+let accordion = document.querySelectorAll(".accordion-header");
 
 // Data variables
 const coursesData = [
@@ -97,4 +98,30 @@ coursesData.forEach((itm) => {
     itm.description,
     itm.button
   ));
+});
+
+// Add accordion function
+accordion.forEach((item, index) => {
+  item.addEventListener("click", () => {
+    const content = document.getElementById(`content${index}`);
+    const arrows = document.getElementById(`arrow${index}`);
+
+    content.classList.toggle("active");
+    arrows.classList.toggle("active");
+
+    const accordionItems = document.querySelectorAll(".accordion-item");
+    const arrowItems = document.querySelectorAll(".arrow");
+
+    accordionItems.forEach((item) => {
+      if (item !== content.parentNode) {
+        item.querySelector(".accordion-content").classList.remove("active");
+      }
+    });
+
+    arrowItems.forEach((itm) => {
+      if (itm.id !== arrows.id) {
+        itm.classList.remove("active");
+      }
+    });
+  });
 });
