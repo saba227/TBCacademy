@@ -304,3 +304,76 @@ main {
 .accordion-content.active {
   max-height: 1000px; /* Adjust the max-height based on your content */
 }
+
+/* ===========================
+    Footer section style
+============================= */
+
+footer {
+  background-color: #1b1e1f;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 228px;
+}
+
+.footer-container {
+  width: 980px;
+  display: block;
+}
+
+.tbc-footer-icon {
+  position: absolute;
+  transform: translateY(60px);
+}
+
+.tbc-footer-icon img {
+  width: 106px;
+  height: 30px;
+}
+
+.footer-item {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.footer-security {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-security span {
+  margin-top: 25px;
+  font-size: 14px;
+  font-family: lighter;
+}
+
+.footer-social {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.footer-social .social-icons {
+  padding-bottom: 30px;
+}
+
+.footer-social .social-icons img {
+  width: 39px;
+  height: 39px;
+  margin: 4px;
+}
+
+.footer-social button {
+  font-size: 16px;
+  font-family: lighter;
+  color: white;
+  background-color: #00aef3;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 32px;
+}
