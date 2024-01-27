@@ -1,4 +1,5 @@
 // Variables for DOM manipulation
+let mobbileMenu = document.getElementById("menuIcon");
 let coursesDiv = document.getElementById("cardContainer");
 let accordion = document.querySelectorAll(".accordion-header");
 
@@ -69,7 +70,19 @@ const coursesData = [
   },
 ];
 
-// Functions
+// Add toggle menu function
+mobbileMenu.addEventListener("click", () => {
+  let toggleMenu = document.getElementById("mobbileMenu");
+  toggleMenu.classList.toggle("active");
+
+  let menuLines = document.querySelectorAll(".menu-icon div");
+  let [one, two, three] = menuLines;
+  one.classList.toggle("active");
+  two.classList.toggle("active");
+  three.classList.toggle("active");
+});
+
+// add courses cards
 const courseCard = (url, title, description, button) => {
   return `<div class="card">
               <img src="${url}" alt="${title} course image" />
@@ -99,6 +112,100 @@ coursesData.forEach((itm) => {
     itm.button
   ));
 });
+
+// Add partner slider
+
+let currentIndex = 0;
+const carouselItems = document.querySelectorAll(".carousel_item");
+const sliderIndicator = document.querySelectorAll(".slider-indicator div"); // this is carousel indicator
+const maxIndex = carouselItems.length - 1;
+
+// slider indicator function
+const updateIndicator = () => {
+  sliderIndicator.forEach((indicator, index) => {
+    indicator.classList.toggle("active", index === currentIndex);
+  });
+};
+
+const showItem = (index, direction) => {
+  carouselItems.forEach((carouselItem) => {
+    carouselItem.classList.remove("carousel_item-active");
+    carouselItem.classList.remove("carousel_item-active-from-right");
+    carouselItem.classList.remove("carousel_item-active-from-left");
+  });
+
+  if (direction == "next") {
+    document
+      .querySelector(".carousel_item:nth-child(" + (index + 1) + ")")
+      .classList.add("carousel_item-active-from-right");
+  } else {
+    document
+      .querySelector(".carousel_item:nth-child(" + (index + 1) + ")")
+      .classList.add("carousel_item-active-from-left");
+  }
+
+  setTimeout(() => {
+    document
+      .querySelector(".carousel_item:nth-child(" + (index + 1) + ")")
+      .classList.add("carousel_item-active");
+  }, 20);
+
+  // Call slider indicator function
+  updateIndicator();
+};
+
+const nextSlide = () => {
+  currentIndex = currentIndex < maxIndex ? currentIndex + 1 : 0;
+  showItem(currentIndex, "next");
+};
+
+const prevSlide = () => {
+  currentIndex = currentIndex > 0 ? currentIndex - 1 : maxIndex;
+  showItem(currentIndex, "prev");
+};
+
+let autoSlideInterval = setInterval(nextSlide, 3000);
+
+const nextSlideClick = () => {
+  clearInterval(autoSlideInterval);
+  nextSlide();
+  autoSlideInterval = setInterval(nextSlide, 3000);
+};
+
+const prevSlideClick = () => {
+  clearInterval(autoSlideInterval);
+  prevSlide();
+  autoSlideInterval = setInterval(nextSlide, 3000);
+};
+
+// swipe area for mobbile version
+const swipeElement = document.getElementById("carousel");
+let touchStartX = 0;
+let touchEndX = 0;
+
+const handleTouchStart = (event) => {
+  touchStartX = event.touches[0].clientX;
+};
+
+const handleTouchMove = (event) => {
+  touchEndX = event.touches[0].clientX;
+};
+
+swipeElement.addEventListener("touchstart", handleTouchStart, false);
+swipeElement.addEventListener("touchmove", handleTouchMove, false);
+swipeElement.addEventListener("touchend", function (event) {
+  handleSwipe();
+});
+
+const handleSwipe = () => {
+  const swipeDistance = touchEndX - touchStartX;
+
+  if (swipeDistance > 0) {
+    prevSlideClick();
+  } else if (swipeDistance < 0) {
+    nextSlideClick();
+  }
+};
 
 // Add accordion function
 accordion.forEach((item, index) => {

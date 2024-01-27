@@ -26,12 +26,39 @@ body {
 /* ===========================
     Header style 
 ============================= */
+
+.header-virtual-space {
+  width: 100%;
+  height: 80px;
+  display: block;
+}
+
 header {
   width: 100%;
   height: 80px;
   display: flex;
   justify-content: center;
   background-color: #1a1e1f;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  transition: 0.4s;
+  opacity: 1;
+}
+
+header.active {
+  opacity: 0.9;
+}
+
+@media screen and (max-width: 900px) {
+  header {
+    transform: translateY(0px);
+  }
+
+  header.active {
+    opacity: 1;
+    transform: translateY(-80px);
+  }
 }
 
 nav {
@@ -60,6 +87,103 @@ nav ul li:hover {
 }
 
 nav ul li:nth-child(3) {
+  color: #00a3e0;
+}
+
+/* ===========================
+    mobbile version menu style 
+============================= */
+.menu-icon {
+  height: 21px;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 2;
+  cursor: pointer;
+  position: fixed;
+  top: 26px;
+  right: 26px;
+}
+
+.menu-icon div:nth-child(1) {
+  width: 13px;
+  height: 3px;
+  background-color: #dbdbdb;
+  border-radius: 1.5px;
+  transform-origin: bottom;
+  transition: 0.4s ease-in-out;
+}
+
+.menu-icon div:nth-child(1).active {
+  transform: translate(4px, 1.5px) rotatez(-135deg);
+  background-color: #767676;
+}
+
+.menu-icon div:nth-child(2) {
+  width: 26px;
+  height: 3px;
+  background-color: #dbdbdb;
+  border-radius: 1.5px;
+  transform-origin: top;
+  transition: 0.4s;
+}
+
+.menu-icon div:nth-child(2).active {
+  transform: rotatez(-45deg);
+  background-color: #767676;
+}
+
+.menu-icon div:nth-child(3) {
+  width: 13px;
+  height: 3px;
+  background-color: #dbdbdb;
+  border-radius: 1.5px;
+  transform: translateX(13px);
+  transform-origin: bottom;
+  transition: 0.4s ease-in-out;
+}
+
+.menu-icon div:nth-child(3).active {
+  transform: rotatez(-135deg) translate(-4px, 14.5px);
+  background-color: #767676;
+}
+
+#mobbileMenu {
+  /* position */
+  position: fixed;
+  top: 0;
+  right: 0;
+  /* ather */
+  display: flex;
+  justify-content: center;
+  background-color: #1b1e1f;
+  width: 220px;
+  height: 100%;
+  z-index: 1;
+  transition: 0.4s ease-in-out;
+  transform: translateX(220px);
+}
+
+#mobbileMenu.active {
+  transform: translateX(0px);
+}
+
+#mobbileMenu ul {
+  width: 90%;
+  margin-top: 85px;
+  text-align: end;
+}
+
+#mobbileMenu ul li {
+  width: 100%;
+  list-style: none;
+  font-family: lighter;
+  padding: 16px 0px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#mobbileMenu ul li:nth-child(3) {
   color: #00a3e0;
 }
 
@@ -227,6 +351,151 @@ main {
 /* ===========================
     Partners slider style
 ============================= */
+
+.slider {
+  width: 100%;
+  background-color: #2b2b2b;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  padding: 40px 0px;
+}
+
+.carousel {
+  max-width: 980px;
+  width: 980px;
+  height: 224px;
+  position: relative;
+  overflow: hidden;
+}
+
+.partners-title {
+  width: 980px;
+  padding-bottom: 20px;
+}
+
+.carousel_inner {
+  overflow: hidden;
+}
+
+.partners-title h3 {
+  font-size: 24px;
+  font-family: lighter;
+}
+
+.carousel_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  visibility: 0;
+  opacity: 0;
+}
+
+.carousel_item:nth-child(3) {
+  justify-content: center;
+}
+
+.carousel_item-active-from-left {
+  transition: left 0.2s ease-in-out;
+  left: -100%;
+}
+.carousel_item-active-from-right {
+  transition: right 0.2s ease-in-out;
+  right: -100%;
+}
+.carousel_item-active {
+  top: 0;
+  visibility: visible;
+  opacity: 1;
+}
+.carousel_item-active-from-left.carousel_item-active {
+  left: 0;
+}
+.carousel_item-active-from-right.carousel_item-active {
+  right: 0;
+}
+
+/* fade effect */
+.carousel__fade .carousel_item-active-from-right {
+  transform: none;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.carousel__fade .carousel_item-active-from-left {
+  transform: none;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.carousel_item img {
+  max-width: 25%;
+  object-fit: contain;
+}
+
+/* slider indicator */
+.slider-indicator {
+  display: flex;
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.slider-indicator div {
+  margin: 6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: white;
+  opacity: 0.4;
+}
+
+.slider-indicator div.active {
+  opacity: 1;
+}
+
+.prev-btn,
+.next-btn {
+  position: absolute;
+  margin: 0 80px;
+  top: 50%;
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+  opacity: 0.7;
+}
+
+.prev-btn svg {
+  fill: white;
+  width: 18px;
+  height: 35px;
+}
+
+.next-btn svg {
+  fill: white;
+  width: 18px;
+  height: 35px;
+  transform: rotate(180deg);
+}
+
+.prev-btn {
+  left: 0;
+}
+
+.next-btn {
+  right: 0;
+}
 
 /* ===========================
     Accordion section style

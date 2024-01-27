@@ -8,7 +8,8 @@
   </head>
   <body>
     <!-- Header section -->
-    <header>
+    <span class="header-virtual-space"></span>
+    <header id="header">
       <nav>
         <div>
           <a href="#">
@@ -125,8 +126,22 @@
           <li>TBC x USAID</li>
           <li>რისკები</li>
         </ul>
-      </nav>
+    </nav>
     </header>
+    <!-- Menu for Mobbile -->
+    <div class="menu-icon" id="menuIcon">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div id="mobbileMenu">
+        <ul>
+            <li>მთავარი</li>
+            <li>TBC IT</li>
+            <li>TBC x USAID</li>
+            <li>რისკები</li>
+        </ul>
+    </div>
 
     <!-- The main section includes everything except the header and footer  -->
     <main>
@@ -160,6 +175,37 @@
           <span class="courses-title">სასწავლო კურსები</span>
           <div id="cardContainer"></div>
         </div>
+      </section>
+
+      <!-- Partner slider section -->
+      <section class="slider">
+        <div class="partners-title">
+          <h3>პროექტის პარტნიორები</h3>
+        </div>
+        <div id="carousel" class="carousel carousel__fade">
+          <div class="carousel_inner">
+            <div class="carousel_item carousel_item-active">
+                <img src="./images/usaid.png" alt="partners image" />
+                <img src="./images/space.png" alt="partners image" />
+                <img src="./images/tineti.png" alt="partners image" />
+            </div>
+            <div class="carousel_item">
+                <img src="./images/tegeta.png" alt="partners image" />
+                <img src="./images/spectre.png" alt="partners image" />
+                <img src="./images/tbc.png" alt="partners image" />
+            </div>
+            <div class="carousel_item">
+                <img src="./images/ufc.png" alt="partners image" />
+            </div>
+            <div class="slider-indicator">
+              <div class="active"></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="prev-btn" onclick="prevSlideClick()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 41"><path d="M20.3 40.8 0 20.5 20.3.2l.7.7L1.3 20.5 21 40.1z"></path></svg></button>
+        <button type="button" class="next-btn" onclick="nextSlideClick()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 41"><path d="M20.3 40.8 0 20.5 20.3.2l.7.7L1.3 20.5 21 40.1z"></path></svg></button>
       </section>
 
       <!-- Accordion section -->
