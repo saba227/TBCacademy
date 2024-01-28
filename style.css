@@ -697,6 +697,7 @@ footer {
 
   .project-description div {
     width: 90%;
+    padding: 30px 0px;
   }
 
   .courses-container {
@@ -761,7 +762,7 @@ footer {
 
   .project-description div h1 {
     font-size: 20px;
-    line-height: 2rem;
+    line-height: 1.8rem;
   }
 
   .courses-container {

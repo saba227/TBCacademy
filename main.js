@@ -6,13 +6,11 @@ let coursesDiv = document.getElementById("cardContainer");
 let accordion = document.querySelectorAll(".accordion-header");
 
 // Window manipulation varibles
-let scrollPos = window.scrollY;
+let scrollYPos = window.scrollY;
 let windowSize = window.innerHeight;
 
 // Header scroll effects
-const webScreenScroll = () => {
-  let scrollPos = window.scrollY;
-  let windowSize = window.innerHeight;
+const webScreenScroll = (scrollPos) => {
   if (scrollPos > 0) {
     document.getElementById("header").style.opacity = "0.9";
   } else {
@@ -22,14 +20,17 @@ const webScreenScroll = () => {
 
 const mobileScreenScroll = () => {
   let currentScrollPos = window.scrollY;
-  if (scrollPos > currentScrollPos) {
+
+  if (scrollYPos < 0) {
+    scrollYPos = 0;
+  } else if (scrollYPos > currentScrollPos) {
     document.getElementById("header").style.top = "0px";
     mobbileMenuIcon.style.top = "26px";
   } else {
     document.getElementById("header").style.top = "-80px";
     mobbileMenuIcon.style.top = "-80px";
   }
-  scrollPos = currentScrollPos;
+  scrollYPos = currentScrollPos;
 };
 
 // Menu version selection ternary operator
@@ -40,7 +41,7 @@ const handleScroll = () => {
   if (currentWindowSize > 768) {
     webScreenScroll(scrollPos);
   } else {
-    mobileScreenScroll(scrollPos);
+    mobileScreenScroll();
   }
 };
 
@@ -52,7 +53,7 @@ window.addEventListener("resize", (e) => {
   handleScroll;
 
   // remove slider fade effect when screen is less 576px.
-  if (width < 576) {
+  if (width > 576) {
     document.getElementById("carousel").classList.remove("carousel__fade");
   }
 });
