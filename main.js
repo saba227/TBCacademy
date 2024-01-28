@@ -5,7 +5,7 @@ let accordion = document.querySelectorAll(".accordion-header");
 
 // Window manipulation varibles
 let scrollYPos = window.scrollY;
-let windowSize = window.innerHeight;
+let windowSize = window.innerWidth;
 
 // Courses data.
 const coursesData = [
@@ -113,12 +113,12 @@ const handleScroll = () => {
 window.addEventListener("scroll", handleScroll);
 
 window.addEventListener("resize", (e) => {
-  let width = e.target.innerWidth;
+  let width = window.innerWidth;
   // Two menu version for dekstop and mobile devises
   handleScroll;
 
   // remove slider fade effect when screen is less 576px.
-  if (width > 576) {
+  if (width < 576) {
     document.getElementById("carousel").classList.remove("carousel__fade");
   }
 });
