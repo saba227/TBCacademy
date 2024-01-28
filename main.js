@@ -120,6 +120,8 @@ window.addEventListener("resize", (e) => {
   // remove slider fade effect when screen is less 576px.
   if (width < 576) {
     document.getElementById("carousel").classList.remove("carousel__fade");
+  } else {
+    document.getElementById("carousel").classList.add("carousel__fade");
   }
 });
 
