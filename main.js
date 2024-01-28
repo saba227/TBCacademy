@@ -1,5 +1,3 @@
-import { coursesData } from "./data.js";
-
 // Variables for DOM manipulation
 let mobbileMenuIcon = document.getElementById("menuIcon");
 let coursesDiv = document.getElementById("cardContainer");
@@ -8,6 +6,73 @@ let accordion = document.querySelectorAll(".accordion-header");
 // Window manipulation varibles
 let scrollYPos = window.scrollY;
 let windowSize = window.innerHeight;
+
+// Courses data.
+const coursesData = [
+  {
+    id: 1,
+    url: "./images/1.webp",
+    title: "iOS Development",
+    description: "რეგისტრაცია დასრულებულია",
+    button: "კურსის დეტალები",
+  },
+  {
+    id: 2,
+    url: "./images/2.webp",
+    title: "React",
+    description: "რეგისტრაცია დასრულებულია",
+    button: "კურსის დეტალები",
+  },
+  {
+    id: 3,
+    url: "./images/3.webp",
+    title: "Intro to Python",
+    description: "რეგისტრაცია დასრულებულია",
+    button: "კურსის დეტალები",
+  },
+  {
+    id: 4,
+    url: "./images/4.webp",
+    title: "Advanced Python",
+    description: "რეგისტრაცია დასრულებულია",
+    button: "კურსის დეტალები",
+  },
+  {
+    id: 5,
+    url: "./images/5.webp",
+    title: "Advanced Cybersecurity Course",
+    description: "რეგისტრაცია დასრულებულია",
+    button: "კურსის დეტალები",
+  },
+  {
+    id: 6,
+    url: "./images/6.webp",
+    title: "ToT - Training of Trainers",
+    description: "რეგისტრაცია დასრულებულია",
+    button: "კურსის დეტალები",
+  },
+  {
+    id: 7,
+    url: "./images/7.webp",
+    title: "Blockchain",
+    description: "რეგისტრაცია დასრულებულია",
+    button: "კურსის დეტალები",
+  },
+  {
+    id: 8,
+    url: "./images/8.webp",
+    title: "DevOps",
+    description: "რეგისტრაცია დასრულებულია",
+    button: "კურსის დეტალები",
+  },
+  {
+    id: 9,
+    url: "./images/9.webp",
+    title: "Information Security Governance",
+    description: "რეგისტრაცია დასრულებულია",
+    button: "კურსის დეტალები",
+  },
+];
 
 // Header scroll effects
 const webScreenScroll = (scrollPos) => {
@@ -106,7 +171,7 @@ coursesData.forEach((itm) => {
 // Add partner slider
 let currentIndex = 0;
 const carouselItems = document.querySelectorAll(".carousel_item");
-const sliderIndicator = document.querySelectorAll(".slider-indicator div"); // this is carousel indicator
+const sliderIndicator = document.querySelectorAll(".slider-indicator div"); // carousel indicator
 const maxIndex = carouselItems.length - 1;
 
 // remove slider fade effect when screen is less 576px.
