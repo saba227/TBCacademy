@@ -1,79 +1,68 @@
+import { coursesData } from "./data.js";
+
 // Variables for DOM manipulation
-let mobbileMenu = document.getElementById("menuIcon");
+let mobbileMenuIcon = document.getElementById("menuIcon");
 let coursesDiv = document.getElementById("cardContainer");
 let accordion = document.querySelectorAll(".accordion-header");
 
-// Data variables
-const coursesData = [
-  {
-    id: 1,
-    url: "./images/1.webp",
-    title: "iOS Development",
-    description: "რეგისტრაცია დასრულებულია",
-    button: "კურსის დეტალები",
-  },
-  {
-    id: 2,
-    url: "./images/2.webp",
-    title: "React",
-    description: "რეგისტრაცია დასრულებულია",
-    button: "კურსის დეტალები",
-  },
-  {
-    id: 3,
-    url: "./images/3.webp",
-    title: "Intro to Python",
-    description: "რეგისტრაცია დასრულებულია",
-    button: "კურსის დეტალები",
-  },
-  {
-    id: 4,
-    url: "./images/4.webp",
-    title: "Advanced Python",
-    description: "რეგისტრაცია დასრულებულია",
-    button: "კურსის დეტალები",
-  },
-  {
-    id: 5,
-    url: "./images/5.webp",
-    title: "Advanced Cybersecurity Course",
-    description: "რეგისტრაცია დასრულებულია",
-    button: "კურსის დეტალები",
-  },
-  {
-    id: 6,
-    url: "./images/6.webp",
-    title: "ToT - Training of Trainers",
-    description: "რეგისტრაცია დასრულებულია",
-    button: "კურსის დეტალები",
-  },
-  {
-    id: 7,
-    url: "./images/7.webp",
-    title: "Blockchain",
-    description: "რეგისტრაცია დასრულებულია",
-    button: "კურსის დეტალები",
-  },
-  {
-    id: 8,
-    url: "./images/8.webp",
-    title: "DevOps",
-    description: "რეგისტრაცია დასრულებულია",
-    button: "კურსის დეტალები",
-  },
-  {
-    id: 9,
-    url: "./images/9.webp",
-    title: "Information Security Governance",
-    description: "რეგისტრაცია დასრულებულია",
-    button: "კურსის დეტალები",
-  },
-];
+// Window manipulation varibles
+let scrollPos = window.scrollY;
+let windowSize = window.innerHeight;
+
+// Header scroll effects
+const webScreenScroll = () => {
+  let scrollPos = window.scrollY;
+  let windowSize = window.innerHeight;
+  if (scrollPos > 0) {
+    document.getElementById("header").style.opacity = "0.9";
+  } else {
+    document.getElementById("header").style.opacity = "1";
+  }
+};
+
+const mobileScreenScroll = () => {
+  let currentScrollPos = window.scrollY;
+  if (scrollPos > currentScrollPos) {
+    document.getElementById("header").style.top = "0px";
+    mobbileMenuIcon.style.top = "26px";
+  } else {
+    document.getElementById("header").style.top = "-80px";
+    mobbileMenuIcon.style.top = "-80px";
+  }
+  scrollPos = currentScrollPos;
+};
+
+// Menu version selection ternary operator
+const handleScroll = () => {
+  const currentWindowSize = window.innerWidth;
+  const scrollPos = window.scrollY;
+
+  if (currentWindowSize > 768) {
+    webScreenScroll(scrollPos);
+  } else {
+    mobileScreenScroll(scrollPos);
+  }
+};
+
+window.addEventListener("scroll", handleScroll);
+
+window.addEventListener("resize", (e) => {
+  let width = e.target.innerWidth;
+  // Two menu version for dekstop and mobile devises
+  handleScroll;
+
+  // remove slider fade effect when screen is less 576px.
+  if (width < 576) {
+    document.getElementById("carousel").classList.remove("carousel__fade");
+  }
+});
 
 // Add toggle menu function
-mobbileMenu.addEventListener("click", () => {
+mobbileMenuIcon.addEventListener("click", () => {
   let toggleMenu = document.getElementById("mobbileMenu");
   toggleMenu.classList.toggle("active");
+  document.body.classList.toggle("hidden");
+  document.querySelector("main").classList.toggle("hidden");
 
   let menuLines = document.querySelectorAll(".menu-icon div");
   let [one, two, three] = menuLines;
@@ -114,11 +103,15 @@ coursesData.forEach((itm) => {
 });
 
 // Add partner slider
-
 let currentIndex = 0;
 const carouselItems = document.querySelectorAll(".carousel_item");
 const sliderIndicator = document.querySelectorAll(".slider-indicator div"); // this is carousel indicator
 const maxIndex = carouselItems.length - 1;
+
+// remove slider fade effect when screen is less 576px.
+if (windowSize < 576) {
+  document.getElementById("carousel").classList.remove("carousel__fade");
+}
 
 // slider indicator function
 const updateIndicator = () => {
